@@ -33,12 +33,14 @@ class Php extends PhpEngineBase
      * Php constructor.
      * @param ObjectManagerInterface $helperFactory
      * @param Helper $helper
+     * @param array $blockVariables
      */
     public function __construct(
         ObjectManagerInterface $helperFactory,
-        Helper $helper
+        Helper $helper,
+        array $blockVariables = []
     ) {
-        parent::__construct($helperFactory);
+        parent::__construct($helperFactory,$blockVariables);
         $this->helper = $helper;
     }
 

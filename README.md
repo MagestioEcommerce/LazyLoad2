@@ -1,4 +1,4 @@
-# Magestio LazyLoad for Magento 2
+# Magestio LazyLoad for Magento 2.4.+
 
 [![N|Solid](https://magestio.com/wp-content/uploads/logo_web_r.png)](https://magestio.com)
 
@@ -27,7 +27,7 @@ php bin/magento setup:static-content:deploy
 
 ### Requirements
 
-* Compatible with Magento 2.3.+
+* Compatible with Magento 2.4.+
 * This extension requires Magestio_Core extension [https://github.com/MagestioEcommerce/core](https://github.com/MagestioEcommerce/core)
 
 ### Technical support
