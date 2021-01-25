@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <lazyload2>
+            <general>
+                <enabled>1</enabled>
+                <lazyload_class>lazyload</lazyload_class>
+                <excluded_blocks></excluded_blocks>
+            </general>
+        </lazyload2>
+    </default>
+</config>
