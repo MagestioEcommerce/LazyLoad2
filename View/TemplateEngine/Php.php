@@ -20,11 +20,6 @@ class Php extends PhpEngineBase
     protected $helper;
 
     /**
-     * @var string
-     */
-    protected $lazyloadClass;
-
-    /**
      * @var array
      */
     protected $excludedBlocks;
@@ -62,11 +57,7 @@ class Php extends PhpEngineBase
 
         if ($this->helper->isEnabled()) {
             if (!in_array(get_class($block), $this->getExcludedBlocks())) {
-                $output = $this->addLazyLoadClass($output);
-            }
-
-            if (get_class($block) == 'Magento\Wishlist\Block\Share\Email\Items\Interceptor') {
-                $output = str_replace("data-src", "src", $output);
+                $output = $this->addLazy($output);
             }
         }
 
@@ -84,37 +75,18 @@ class Php extends PhpEngineBase
         return $this->excludedBlocks;
     }
 
-    /**
-     * @return string
-     */
-    protected function getLazyLoadClass()
-    {
-        if (!$this->lazyloadClass) {
-            $this->lazyloadClass = $this->helper->getLazyLoadClass();
-        }
-        return $this->lazyloadClass;
-    }
 
     /**
      * @param $html
      * @return string
      */
-    public function addLazyLoadClass($html)
+    public function addLazy($html)
     {
-        $class = $this->getLazyLoadClass();
         preg_match_all('/<img[^>]*src=\"([^\"]*)\"[^>]*>/is', $html, $matches);
         $replaced = [];
         $search   = [];
         foreach ($matches[0] as $img) {
-            if (strpos($img, $class) !== false or strpos($img, 'data-src') !== false) {
-                continue;
-            }
-            if (strpos($img, 'class="') !== false) {
-                $newClass = str_replace('class="', 'class="' . $class . ' ', $img);
-            } else {
-                $newClass = str_replace('<img', '<img class="' . $class . '"', $img);
-            }
-            $strProcess = str_replace('src="', 'data-src="', $newClass);
+            $strProcess = str_replace('<img', '<img loading="lazy"', $img);
             $replaced[] = $strProcess;
             $search[]   = $img;
 
