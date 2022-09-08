@@ -1,6 +1,9 @@
 # Magestio LazyLoad for Magento 2.4.+
 
-[![N|Solid](https://magestio.com/wp-content/uploads/logo_web_r.png)](https://magestio.com)
+<p>
+<a href="https://magestio.com/"><img src="https://magestio.com/wp-content/uploads/magestio-logo@4x-8.png" align="left" width="120" height="25" ></a>
+</p>
+<br>
 
 ### Features
 
